@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqqdw61spkha3"]
+
+[ext_resource type="Script" uid="uid://bs87apgsrprft" path="res://scripts/npc.gd" id="1_bfr8n"]
+[ext_resource type="Texture2D" uid="uid://cxd0lwpdpdp3v" path="res://assets/Professora.png" id="2_bfr8n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbs73"]
+bg_color = Color(0.156863, 0.219608, 0.32549, 0.501961)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1af0d"]
+size = Vector2(134.359, 284.349)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j76b0"]
+
+[node name="Professora" type="Area2D"]
+script = ExtResource("1_bfr8n")
+
+[node name="SpriteProfessora" type="Sprite2D" parent="."]
+position = Vector2(-4.00004, -6.7547e-05)
+scale = Vector2(0.115234, 0.114583)
+texture = ExtResource("2_bfr8n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="caixa_dialogo" type="Label" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 454.0
+offset_right = 1124.0
+offset_bottom = 604.0
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_xbs73")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="texto_dialogo" type="Label" parent="CanvasLayer"]
+offset_left = 63.0
+offset_top = 467.0
+offset_right = 1063.0
+offset_bottom = 587.0
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+
+[node name="CollisionInteração" type="CollisionShape2D" parent="."]
+position = Vector2(-7.54395e-08, -3.57628e-06)
+rotation = -3.14159
+scale = Vector2(1.75649, -0.597858)
+shape = SubResource("RectangleShape2D_1af0d")
+
+[node name="label_interacao" type="Label" parent="."]
+offset_left = -104.0
+offset_top = -135.0
+offset_right = 103.0
+offset_bottom = -112.0
+text = "Pressione 'E' para interagir"
+label_settings = SubResource("LabelSettings_j76b0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

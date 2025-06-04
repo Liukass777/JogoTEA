@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://db05idgoi568k"]
+
+[ext_resource type="Script" uid="uid://wymqctcykcsp" path="res://zMINIGAMES/Jogo dos Livros/scripts/livro errado.gd" id="1_6i0ay"]
+[ext_resource type="Texture2D" uid="uid://cr77dfdnranr7" path="res://zMINIGAMES/Jogo dos Livros/assets/LivroAzul.png" id="2_oy3ke"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbn41"]
+radius = 87.0517
+
+[node name="bomba" type="Area2D"]
+script = ExtResource("1_6i0ay")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_oy3ke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 28)
+shape = SubResource("CircleShape2D_hbn41")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

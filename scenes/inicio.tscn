@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bopfjdfgfh5gr"]
+
+[ext_resource type="Texture2D" uid="uid://ubvjsqe53i0r" path="res://zMINIGAMES/Jogo das Perguntas/assets/menu.jpg" id="1_q3pj3"]
+[ext_resource type="Script" uid="uid://bd3ccr2tsmnrc" path="res://scripts/GoToClass.gd" id="2_oc22k"]
+[ext_resource type="Texture2D" uid="uid://bymdscldnuhnt" path="res://zMINIGAMES/Jogo das Perguntas/assets/PlayButton.png" id="3_se2mk"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k0uiq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ynt71"]
+font_size = 120
+
+[node name="JogoTEA" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SegmentShape2D_k0uiq")
+
+[node name="background" type="Sprite2D" parent="Area2D"]
+position = Vector2(576, 324)
+scale = Vector2(1.8, 1.0125)
+texture = ExtResource("1_q3pj3")
+
+[node name="Label" type="Label" parent="Area2D"]
+offset_right = 1153.0
+offset_bottom = 189.0
+text = "       Jogo do TEA"
+label_settings = SubResource("LabelSettings_ynt71")
+
+[node name="Button" type="Button" parent="Area2D"]
+offset_left = 474.0
+offset_top = 248.0
+offset_right = 658.0
+offset_bottom = 432.0
+flat = true
+script = ExtResource("2_oc22k")
+
+[node name="buttonSprite" type="Sprite2D" parent="Area2D/Button"]
+position = Vector2(93, 92)
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("3_se2mk")
+
+[connection signal="pressed" from="Area2D/Button" to="Area2D/Button" method="_on_pressed"]

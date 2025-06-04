@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://eaq8s5eth1x8"]
+
+[ext_resource type="Script" uid="uid://8oyx18sdvm4o" path="res://zMINIGAMES/Jogo das Perguntas/scripts/nextQuestion.gd" id="2_dixpp"]
+[ext_resource type="Script" uid="uid://0b4tth3q6wup" path="res://zMINIGAMES/Jogo das Perguntas/scripts/backToMenuQ4.gd" id="2_tf5gd"]
+[ext_resource type="Texture2D" uid="uid://c80vnyxnmukwl" path="res://zMINIGAMES/Jogo das Perguntas/assets/quests.png" id="3_tf5gd"]
+
+[node name="Quests" type="Area2D"]
+
+[node name="Back" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.75, 0.632813)
+texture = ExtResource("3_tf5gd")
+
+[node name="4Button" type="Button" parent="."]
+offset_left = 210.0
+offset_top = 189.0
+offset_right = 510.0
+offset_bottom = 289.0
+text = "A) Errada"
+script = ExtResource("2_tf5gd")
+
+[node name="4Button2" type="Button" parent="."]
+offset_left = 545.0
+offset_top = 189.0
+offset_right = 845.0
+offset_bottom = 289.0
+text = "B) Errada"
+script = ExtResource("2_tf5gd")
+
+[node name="4Button3" type="Button" parent="."]
+offset_left = 211.0
+offset_top = 338.0
+offset_right = 511.0
+offset_bottom = 438.0
+text = "C) Errada"
+script = ExtResource("2_tf5gd")
+
+[node name="4Button4" type="Button" parent="."]
+offset_left = 544.0
+offset_top = 338.0
+offset_right = 844.0
+offset_bottom = 438.0
+text = "D) Certa"
+script = ExtResource("2_dixpp")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 202.0
+offset_top = 60.0
+offset_right = 853.0
+offset_bottom = 180.0
+theme_override_font_sizes/font_size = 48
+text = "ESCREVA AQUI A PERGUNTA"
+
+[connection signal="pressed" from="4Button" to="4Button" method="_on_pressed"]
+[connection signal="pressed" from="4Button2" to="4Button2" method="_on_button_2_pressed"]
+[connection signal="pressed" from="4Button3" to="4Button3" method="_on_button_3_pressed"]
+[connection signal="pressed" from="4Button4" to="4Button4" method="_on_button_4_pressed"]

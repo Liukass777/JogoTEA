@@ -1,0 +1,72 @@
+[gd_scene load_steps=14 format=3 uid="uid://cmeexojdpeh8u"]
+
+[ext_resource type="Script" uid="uid://bve37u67khdu8" path="res://scripts/player.gd" id="1_unwft"]
+[ext_resource type="Texture2D" uid="uid://emtxiht5ged" path="res://assets/andando 1.png" id="2_8bq56"]
+[ext_resource type="Texture2D" uid="uid://chwy3do6p4uc5" path="res://assets/andando 2.png" id="3_tckef"]
+[ext_resource type="Texture2D" uid="uid://bnat4pmhyy4or" path="res://assets/andando 3.png" id="4_ym2kn"]
+[ext_resource type="Texture2D" uid="uid://cqt7vwrguqp1y" path="res://assets/andando 4.png" id="5_vtxll"]
+[ext_resource type="Texture2D" uid="uid://b5ilwslg5pmvy" path="res://assets/andando 5.png" id="6_s1iqd"]
+[ext_resource type="Texture2D" uid="uid://3amid2wxm7yn" path="res://assets/andando 6.png" id="7_6ptbh"]
+[ext_resource type="Texture2D" uid="uid://c48jit2ek8kvn" path="res://assets/parado 1.png" id="8_uk4ck"]
+[ext_resource type="Texture2D" uid="uid://bfdwog083uvq3" path="res://assets/parado 2.png" id="9_gonb2"]
+[ext_resource type="Texture2D" uid="uid://uh1jt6jq3b87" path="res://assets/parado 3.png" id="10_j4uu1"]
+[ext_resource type="Texture2D" uid="uid://cr68x0us7gg73" path="res://assets/parado 4.png" id="11_86n0t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vaqx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8bq56")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tckef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ym2kn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vtxll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s1iqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6ptbh")
+}],
+"loop": true,
+"name": &"andando",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_uk4ck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gonb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j4uu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_86n0t")
+}],
+"loop": true,
+"name": &"parado",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u174g"]
+radius = 30.0
+height = 60.0
+
+[node name="player" type="CharacterBody2D"]
+collision_mask = 15
+script = ExtResource("1_unwft")
+
+[node name="AnimationSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1vaqx")
+animation = &"parado"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 31)
+shape = SubResource("CapsuleShape2D_u174g")

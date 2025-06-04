@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd8xwn6nuju4f"]
+
+[ext_resource type="Script" uid="uid://dv7ut3hkvgifm" path="res://zMINIGAMES/Jogo dos Livros/scripts/livros.gd" id="1_8uyfp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbn41"]
+radius = 121.643
+
+[node name="cereja" type="Area2D"]
+script = ExtResource("1_8uyfp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 0)
+shape = SubResource("CircleShape2D_hbn41")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

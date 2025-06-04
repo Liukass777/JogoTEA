@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://f5hki0dagf5a"]
+
+[ext_resource type="Script" uid="uid://dv7ut3hkvgifm" path="res://zMINIGAMES/Jogo dos Livros/scripts/livros.gd" id="1_8si3o"]
+[ext_resource type="Texture2D" uid="uid://4s2uf8a6ytyc" path="res://zMINIGAMES/Jogo dos Livros/assets/LivroVermelho.png" id="2_rj8xc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbn41"]
+radius = 73.0616
+
+[node name="laranja" type="Area2D"]
+script = ExtResource("1_8si3o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rj8xc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, 30)
+shape = SubResource("CircleShape2D_hbn41")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

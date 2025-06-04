@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3og3extdwcnx"]
+
+[ext_resource type="PackedScene" uid="uid://b4untliq8seir" path="res://fase_1.tscn" id="1_844wa"]
+[ext_resource type="PackedScene" uid="uid://cmeexojdpeh8u" path="res://pleyer.tscn" id="2_844wa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_844wa"]
+size = Vector2(123.5, 46)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="fase 1" parent="." instance=ExtResource("1_844wa")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(126.25, 354)
+shape = SubResource("RectangleShape2D_844wa")
+
+[node name="personagem]" parent="." instance=ExtResource("2_844wa")]
+position = Vector2(250, 286)

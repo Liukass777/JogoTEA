@@ -1,0 +1,69 @@
+[gd_scene load_steps=15 format=3 uid="uid://coaq1c1obnyp6"]
+
+[ext_resource type="Script" uid="uid://1bmm8q4womh6" path="res://zMINIGAMES/Jogo dos Livros/scripts/instance_objetcs.gd" id="1_3rn4x"]
+[ext_resource type="PackedScene" uid="uid://c5epn1fqjs8sg" path="res://zMINIGAMES/Jogo dos Livros/scenes/cesto.tscn" id="1_h2cyb"]
+[ext_resource type="Script" uid="uid://dv7ut3hkvgifm" path="res://zMINIGAMES/Jogo dos Livros/scripts/livros.gd" id="2_k8itr"]
+[ext_resource type="PackedScene" uid="uid://db05idgoi568k" path="res://zMINIGAMES/Jogo dos Livros/scenes/livro errado.tscn" id="3_k8itr"]
+[ext_resource type="PackedScene" uid="uid://dd8xwn6nuju4f" path="res://zMINIGAMES/Jogo dos Livros/scenes/livro azul.tscn" id="4_s6ras"]
+[ext_resource type="PackedScene" uid="uid://f5hki0dagf5a" path="res://zMINIGAMES/Jogo dos Livros/scenes/livro laranja.tscn" id="5_oglc8"]
+[ext_resource type="PackedScene" uid="uid://ditbok5newwq8" path="res://zMINIGAMES/Jogo dos Livros/scenes/livro verde.tscn" id="6_m4jdx"]
+[ext_resource type="PackedScene" uid="uid://bba4wy0nydv4m" path="res://zMINIGAMES/Jogo dos Livros/scenes/livro marrom.tscn" id="7_g3yj5"]
+[ext_resource type="Texture2D" uid="uid://7diei61u8pdv" path="res://zMINIGAMES/Jogo dos Livros/assets/Background.jpg" id="8_k8itr"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yt2gt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbn41"]
+radius = 121.643
+
+[sub_resource type="PackedScene" id="PackedScene_oglc8"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741827, 1073741826, 11, 10, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Banana", "Area2D", "script", "Sprite2D", "Sprite2D", "texture", "CollisionShape2D", "CollisionShape2D", "position", "shape", "_on_area_entered", "area_entered"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 1, 5, 1, 0, 1073741825, 0, 7, 6, -1, 2, 8, 2, 9, 3, 0),
+"variants": [ExtResource("2_k8itr"), SubResource("CompressedTexture2D_yt2gt"), Vector2(-26, -25), SubResource("CircleShape2D_hbn41")],
+"version": 3
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_k8w4s"]
+font_color = Color(0, 0, 0, 0.635294)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k3e4a"]
+a = Vector2(0, 648)
+b = Vector2(0, 0)
+
+[node name="Jogo dos Livros" type="Node2D"]
+position = Vector2(305, 0)
+script = ExtResource("1_3rn4x")
+objects = Array[PackedScene]([SubResource("PackedScene_oglc8"), ExtResource("3_k8itr"), ExtResource("4_s6ras"), ExtResource("5_oglc8"), ExtResource("6_m4jdx"), ExtResource("7_g3yj5")])
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(270.5, 325)
+scale = Vector2(0.839063, 1.00937)
+texture = ExtResource("8_k8itr")
+
+[node name="Cesto" parent="." instance=ExtResource("1_h2cyb")]
+position = Vector2(55, 575)
+scale = Vector2(0.4, 0.4)
+
+[node name="pontos" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 611.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 1
+text = "     PEGUE SOMENTE LIVROS MARRONS, VERMELHOS E VERDES: "
+label_settings = SubResource("LabelSettings_k8w4s")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LimiteDaTela" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("SegmentShape2D_k3e4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LimiteDaTela"]
+position = Vector2(539, 0)
+shape = SubResource("SegmentShape2D_k3e4a")
