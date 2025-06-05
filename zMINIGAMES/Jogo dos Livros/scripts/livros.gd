@@ -11,5 +11,5 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D):
 	if area.name == "Cesto":
-		get_parent().pontos += 20
+		get_parent().pontos += 10
 		queue_free()

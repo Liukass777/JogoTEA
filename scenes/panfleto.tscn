@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://yxwsbsmxi7h"]
+[gd_scene load_steps=8 format=3 uid="uid://yxwsbsmxi7h"]
 
 [ext_resource type="Script" uid="uid://bsaii3m02jc37" path="res://scripts/panfleto.gd" id="1_lwcvo"]
 [ext_resource type="Texture2D" uid="uid://d37hsdfj4g2kr" path="res://assets/panfleto.png" id="2_y7y5s"]
+[ext_resource type="AudioStream" uid="uid://bni8y832tvbv7" path="res://sounds/fala 1.mp3" id="3_sxwcs"]
+[ext_resource type="AudioStream" uid="uid://dxwmfjgnrnl6g" path="res://sounds/fala 2.mp3" id="4_yc8af"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbs73"]
 bg_color = Color(0.156863, 0.219608, 0.32549, 0.501961)
@@ -57,6 +59,12 @@ offset_right = 65.0
 offset_bottom = -51.0
 text = "Pressione 'E' para interagir"
 label_settings = SubResource("LabelSettings_j76b0")
+
+[node name="fala1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sxwcs")
+
+[node name="fala2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yc8af")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

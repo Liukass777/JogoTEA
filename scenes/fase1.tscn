@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://b4untliq8seir"]
+[gd_scene load_steps=42 format=4 uid="uid://b4untliq8seir"]
 
 [ext_resource type="Texture2D" uid="uid://ck4p6t8ocwmnn" path="res://assets/2dClassroomAssetPackByStyloo/WallFloorDoorWstroke/Wallfloordoorw First Spritesheet 3.png" id="1_ge8mc"]
 [ext_resource type="Texture2D" uid="uid://ybto08y7gv0c" path="res://assets/2dClassroomAssetPackByStyloo/Classroom 2 Props/Classroom Props Second Spritesheet 1.png" id="1_tggv0"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bqqdw61spkha3" path="res://scenes/npc.tscn" id="12_i8r7k"]
 [ext_resource type="PackedScene" uid="uid://yxwsbsmxi7h" path="res://scenes/panfleto.tscn" id="13_1w6lh"]
 [ext_resource type="PackedScene" uid="uid://dyxfppw2rop6g" path="res://scenes/celular.tscn" id="14_3ywvp"]
+[ext_resource type="PackedScene" uid="uid://c2yw4q30dmyo3" path="res://scenes/prova.tscn" id="15_rjo8m"]
+[ext_resource type="AudioStream" uid="uid://cdbcbdul5kggc" path="res://sounds/sala de aula 2.wav" id="16_6skwa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ywvp"]
 texture = ExtResource("1_ge8mc")
@@ -103928,6 +103930,11 @@ size = Vector2(1110, 2)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3ywvp"]
 b = Vector2(31, 0)
 
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_6skwa"]
+stream_count = 1
+stream_0/stream = ExtResource("16_6skwa")
+stream_0/volume = 0.0
+
 [node name="Sala de Aula" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -104024,18 +104031,26 @@ shape = SubResource("RectangleShape2D_uqgj4")
 [node name="panfleto" parent="." instance=ExtResource("13_1w6lh")]
 position = Vector2(1012, 146)
 
+[node name="celular" parent="." instance=ExtResource("14_3ywvp")]
+position = Vector2(344, 345)
+
 [node name="player" parent="." instance=ExtResource("10_8t630")]
 position = Vector2(225, 227)
 
 [node name="professora" parent="." instance=ExtResource("12_i8r7k")]
 position = Vector2(789, 275)
 
-[node name="celular" parent="." instance=ExtResource("14_3ywvp")]
-position = Vector2(344, 345)
-
-[node name="PésDaProf" type="CollisionShape2D" parent="."]
-position = Vector2(773, 339)
+[node name="PésDaProf" type="CollisionShape2D" parent="professora"]
+position = Vector2(-16, 64)
 shape = SubResource("SegmentShape2D_3ywvp")
+
+[node name="Professora" parent="professora" instance=ExtResource("15_rjo8m")]
+position = Vector2(-665, 72)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamSynchronized_6skwa")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="body_entered" from="celular" to="celular" method="_on_body_entered"]
 [connection signal="body_exited" from="celular" to="celular" method="_on_body_exited"]

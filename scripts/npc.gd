@@ -3,6 +3,8 @@ extends Area2D
 @onready var label_interacao: Label = $label_interacao
 @onready var caixa_dialogo: Label = $CanvasLayer/caixa_dialogo
 @onready var texto_dialogo: Label = $CanvasLayer/texto_dialogo
+@onready var fala1 = $"primeria parte" as AudioStreamPlayer
+@onready var fala2 = $"segunda parte" as AudioStreamPlayer
 
 var player_in_area = false
 var falando = false
@@ -21,8 +23,10 @@ func _ready() -> void:
 
 func _process(_delta)->void:
 	if player_in_area and not falando and Input.is_action_just_pressed("interact"):
+		fala1.play()
 		iniciar_dialogo()
 	elif falando and pode_avançar and Input.is_action_just_pressed("interact"):
+		fala2.play()
 		proxima_fala()
 
 func _on_body_entered(body) -> void:

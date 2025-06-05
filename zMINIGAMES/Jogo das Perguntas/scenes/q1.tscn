@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc0mw25cdf21i"]
+[gd_scene load_steps=7 format=3 uid="uid://cc0mw25cdf21i"]
 
 [ext_resource type="Texture2D" uid="uid://c80vnyxnmukwl" path="res://zMINIGAMES/Jogo das Perguntas/assets/quests.png" id="1_fxvci"]
 [ext_resource type="Script" uid="uid://br128xfeoiack" path="res://zMINIGAMES/Jogo das Perguntas/scripts/backToMenuQ1.gd" id="1_jqvav"]
 [ext_resource type="Script" uid="uid://8oyx18sdvm4o" path="res://zMINIGAMES/Jogo das Perguntas/scripts/nextQuestion.gd" id="1_rxoc4"]
+[ext_resource type="AudioStream" uid="uid://u15klp4oebbg" path="res://sounds/acerto.wav" id="4_6yxd7"]
+[ext_resource type="AudioStream" uid="uid://c7rvfr488gb6f" path="res://sounds/resposta errada.wav" id="5_1rx4v"]
+[ext_resource type="AudioStream" uid="uid://ctnujkoyllr5m" path="res://sounds/pergunta q1.mp3" id="6_fcgij"]
 
 [node name="Quests" type="Area2D"]
 
@@ -16,7 +19,7 @@ offset_left = 210.0
 offset_top = 189.0
 offset_right = 510.0
 offset_bottom = 289.0
-text = "A) Certa"
+text = "A) 4"
 script = ExtResource("1_rxoc4")
 
 [node name="1Button2" type="Button" parent="."]
@@ -24,7 +27,7 @@ offset_left = 544.0
 offset_top = 190.0
 offset_right = 844.0
 offset_bottom = 290.0
-text = "B) Errada"
+text = "B) 3"
 script = ExtResource("1_jqvav")
 
 [node name="1Button3" type="Button" parent="."]
@@ -32,7 +35,7 @@ offset_left = 210.0
 offset_top = 338.0
 offset_right = 510.0
 offset_bottom = 438.0
-text = "C) Errada"
+text = "C)5"
 script = ExtResource("1_jqvav")
 
 [node name="1Button4" type="Button" parent="."]
@@ -40,16 +43,27 @@ offset_left = 544.0
 offset_top = 338.0
 offset_right = 844.0
 offset_bottom = 438.0
-text = "D) Errada"
+text = "D) 22"
 script = ExtResource("1_jqvav")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 202.0
-offset_top = 60.0
-offset_right = 853.0
+offset_left = 61.0
+offset_top = 30.0
+offset_right = 1028.0
 offset_bottom = 180.0
 theme_override_font_sizes/font_size = 48
-text = "ESCREVA AQUI A PERGUNTA"
+text = "Se Ana tem 2 brinquedos e ganha mais 2, com quantos brinquedos ela fica?"
+autowrap_mode = 3
+
+[node name="q1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6yxd7")
+
+[node name="q_errada" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1rx4v")
+
+[node name="pergunta" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_fcgij")
+autoplay = true
 
 [connection signal="pressed" from="1Button" to="1Button" method="_on_pressed"]
 [connection signal="pressed" from="1Button2" to="1Button2" method="_on_button_2_pressed"]

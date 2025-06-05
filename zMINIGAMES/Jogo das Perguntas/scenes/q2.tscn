@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8rl3cdmen8p2"]
+[gd_scene load_steps=7 format=3 uid="uid://b8rl3cdmen8p2"]
 
 [ext_resource type="Texture2D" uid="uid://c80vnyxnmukwl" path="res://zMINIGAMES/Jogo das Perguntas/assets/quests.png" id="1_xi35t"]
 [ext_resource type="Script" uid="uid://8oyx18sdvm4o" path="res://zMINIGAMES/Jogo das Perguntas/scripts/nextQuestion.gd" id="2_vmoxj"]
 [ext_resource type="Script" uid="uid://b7vcb4beisxnu" path="res://zMINIGAMES/Jogo das Perguntas/scripts/backToMenuQ2.gd" id="2_xi35t"]
+[ext_resource type="AudioStream" uid="uid://u15klp4oebbg" path="res://sounds/acerto.wav" id="4_7etkx"]
+[ext_resource type="AudioStream" uid="uid://c7rvfr488gb6f" path="res://sounds/resposta errada.wav" id="5_nkwut"]
+[ext_resource type="AudioStream" uid="uid://csucrul6fgfla" path="res://sounds/pergunta q2.mp3" id="6_7ieb5"]
 
 [node name="Quests" type="Area2D"]
 
@@ -16,7 +19,7 @@ offset_left = 210.0
 offset_top = 188.0
 offset_right = 510.0
 offset_bottom = 288.0
-text = "A) Errada"
+text = "A)  Chinelo 🧢"
 script = ExtResource("2_xi35t")
 
 [node name="2Button2" type="Button" parent="."]
@@ -24,7 +27,7 @@ offset_left = 545.0
 offset_top = 188.0
 offset_right = 845.0
 offset_bottom = 288.0
-text = "B) Errada"
+text = "B) Óculos de sol 🕶️"
 script = ExtResource("2_xi35t")
 
 [node name="2Button3" type="Button" parent="."]
@@ -32,7 +35,7 @@ offset_left = 210.0
 offset_top = 338.0
 offset_right = 510.0
 offset_bottom = 438.0
-text = "C) Certa"
+text = "C) Guarda-chuva ☔"
 script = ExtResource("2_vmoxj")
 
 [node name="2Button4" type="Button" parent="."]
@@ -40,16 +43,27 @@ offset_left = 545.0
 offset_top = 338.0
 offset_right = 845.0
 offset_bottom = 438.0
-text = "D) Errada"
+text = "D) sacola 🧺"
 script = ExtResource("2_xi35t")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 202.0
-offset_top = 60.0
-offset_right = 853.0
-offset_bottom = 180.0
+offset_left = 208.0
+offset_top = 36.0
+offset_right = 859.0
+offset_bottom = 173.0
 theme_override_font_sizes/font_size = 48
-text = "ESCREVA AQUI A PERGUNTA"
+text = "Qual desses itens você usaria num dia de chuva?"
+autowrap_mode = 2
+
+[node name="q2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7etkx")
+
+[node name="q_errada" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nkwut")
+
+[node name="pergunta" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_7ieb5")
+autoplay = true
 
 [connection signal="pressed" from="2Button" to="2Button" method="_on_pressed"]
 [connection signal="pressed" from="2Button2" to="2Button2" method="_on_button_2_pressed"]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b67m8muu8y0qd"]
+[gd_scene load_steps=5 format=3 uid="uid://b67m8muu8y0qd"]
 
 [ext_resource type="Texture2D" uid="uid://7diei61u8pdv" path="res://zMINIGAMES/Jogo dos Livros/assets/Background.jpg" id="1_60ghs"]
 [ext_resource type="Script" uid="uid://cpmbimxhbh6cm" path="res://zMINIGAMES/Jogo dos Livros/scripts/backtoclass.gd" id="2_cvhk4"]
 [ext_resource type="FontFile" uid="uid://dxbnef7isnikn" path="res://scenes/OCRASTD.OTF" id="3_cvhk4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qv006"]
+font_size = 26
 
 [node name="Node2D" type="Node2D"]
 
@@ -31,5 +34,13 @@ theme_override_font_sizes/font_size = 42
 text = "CONGRATULAÇÕES, VOCÊ CONSEGUIU"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 426.0
+offset_top = 140.0
+offset_right = 746.0
+offset_bottom = 176.0
+text = "VOCÊ GANHO 10 PONTOS"
+label_settings = SubResource("LabelSettings_qv006")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

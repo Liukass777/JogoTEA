@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b07pddaeby321"
+path="res://.godot/imported/pergunta q4.mp3-eaa907aca4d6c7cf487ef66e3fd342bb.mp3str"
+
+[deps]
+
+source_file="res://sounds/pergunta q4.mp3"
+dest_files=["res://.godot/imported/pergunta q4.mp3-eaa907aca4d6c7cf487ef66e3fd342bb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

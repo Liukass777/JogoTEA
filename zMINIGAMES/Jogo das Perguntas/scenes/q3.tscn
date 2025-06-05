@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqox37lu8ao0q"]
+[gd_scene load_steps=7 format=3 uid="uid://cqox37lu8ao0q"]
 
 [ext_resource type="Texture2D" uid="uid://c80vnyxnmukwl" path="res://zMINIGAMES/Jogo das Perguntas/assets/quests.png" id="1_cr4dj"]
 [ext_resource type="Script" uid="uid://k1b2dku547ca" path="res://zMINIGAMES/Jogo das Perguntas/scripts/backToMenuQ3.gd" id="2_cr4dj"]
 [ext_resource type="Script" uid="uid://8oyx18sdvm4o" path="res://zMINIGAMES/Jogo das Perguntas/scripts/nextQuestion.gd" id="2_i230q"]
+[ext_resource type="AudioStream" uid="uid://u15klp4oebbg" path="res://sounds/acerto.wav" id="4_w6jtj"]
+[ext_resource type="AudioStream" uid="uid://c7rvfr488gb6f" path="res://sounds/resposta errada.wav" id="5_avq4r"]
+[ext_resource type="AudioStream" uid="uid://dai2xghojt343" path="res://sounds/pergunta q3.mp3" id="6_ofy8y"]
 
 [node name="Quests" type="Area2D"]
 
@@ -16,7 +19,7 @@ offset_left = 211.0
 offset_top = 189.0
 offset_right = 511.0
 offset_bottom = 289.0
-text = "A) Errada"
+text = "A)  Uva 🍇 — Roxa"
 script = ExtResource("2_cr4dj")
 
 [node name="3Button2" type="Button" parent="."]
@@ -24,7 +27,7 @@ offset_left = 544.0
 offset_top = 189.0
 offset_right = 844.0
 offset_bottom = 289.0
-text = "B) Certa
+text = "B) Banana 🍌 — Amarela 
 "
 script = ExtResource("2_i230q")
 
@@ -33,7 +36,7 @@ offset_left = 210.0
 offset_top = 338.0
 offset_right = 510.0
 offset_bottom = 438.0
-text = "C) Errada"
+text = "C) Maçã 🍎 — Vermelha"
 script = ExtResource("2_cr4dj")
 
 [node name="3Button4" type="Button" parent="."]
@@ -41,16 +44,27 @@ offset_left = 544.0
 offset_top = 338.0
 offset_right = 844.0
 offset_bottom = 438.0
-text = "D) Errada"
+text = "D) Abacate 🥑 — Verde"
 script = ExtResource("2_cr4dj")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 202.0
-offset_top = 60.0
-offset_right = 853.0
-offset_bottom = 180.0
+offset_left = 200.0
+offset_top = 35.0
+offset_right = 851.0
+offset_bottom = 172.0
 theme_override_font_sizes/font_size = 48
-text = "ESCREVA AQUI A PERGUNTA"
+text = "Qual dessas frutas é da mesma cor que o sol? ☀️"
+autowrap_mode = 2
+
+[node name="q3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_w6jtj")
+
+[node name="q_errada" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_avq4r")
+
+[node name="pergunta" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ofy8y")
+autoplay = true
 
 [connection signal="pressed" from="3Button" to="3Button" method="_on_pressed"]
 [connection signal="pressed" from="3Button2" to="3Button2" method="_on_button_2_pressed"]

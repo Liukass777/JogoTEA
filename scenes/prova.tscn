@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2yw4q30dmyo3"]
+
+[ext_resource type="Script" uid="uid://c7hso4u7bushh" path="res://scripts/prova.gd" id="1_xt75m"]
+[ext_resource type="AudioStream" uid="uid://bmhmf83mc5wcq" path="res://sounds/prova.mp3" id="2_c7jpt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbs73"]
+bg_color = Color(0.156863, 0.219608, 0.32549, 0.501961)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1af0d"]
+size = Vector2(40.2793, 153.464)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j76b0"]
+
+[node name="Professora" type="Area2D"]
+script = ExtResource("1_xt75m")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="caixa_dialogo" type="Label" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 454.0
+offset_right = 1124.0
+offset_bottom = 604.0
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_xbs73")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="texto_dialogo" type="Label" parent="CanvasLayer"]
+offset_left = 63.0
+offset_top = 467.0
+offset_right = 1063.0
+offset_bottom = 587.0
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+
+[node name="CollisionInteração" type="CollisionShape2D" parent="."]
+position = Vector2(2.62501, 23.125)
+rotation = -3.14159
+scale = Vector2(1.75649, -0.597858)
+shape = SubResource("RectangleShape2D_1af0d")
+
+[node name="label_interacao" type="Label" parent="."]
+offset_left = -104.0
+offset_top = -135.0
+offset_right = 103.0
+offset_bottom = -112.0
+text = "Pressione 'E' para interagir"
+label_settings = SubResource("LabelSettings_j76b0")
+
+[node name="prova_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_c7jpt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

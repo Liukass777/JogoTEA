@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqqdw61spkha3"]
+[gd_scene load_steps=8 format=3 uid="uid://bqqdw61spkha3"]
 
 [ext_resource type="Script" uid="uid://bs87apgsrprft" path="res://scripts/npc.gd" id="1_bfr8n"]
 [ext_resource type="Texture2D" uid="uid://cxd0lwpdpdp3v" path="res://assets/Professora.png" id="2_bfr8n"]
+[ext_resource type="AudioStream" uid="uid://dhp4g1s128kgl" path="res://sounds/professora-1wav.wav" id="3_7n8xq"]
+[ext_resource type="AudioStream" uid="uid://cov26heou1qgn" path="res://sounds/professora-2wav.wav" id="4_4wlns"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbs73"]
 bg_color = Color(0.156863, 0.219608, 0.32549, 0.501961)
@@ -55,6 +57,12 @@ offset_right = 103.0
 offset_bottom = -112.0
 text = "Pressione 'E' para interagir"
 label_settings = SubResource("LabelSettings_j76b0")
+
+[node name="primeria parte" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7n8xq")
+
+[node name="segunda parte" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4wlns")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

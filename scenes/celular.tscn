@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyxfppw2rop6g"]
+[gd_scene load_steps=7 format=3 uid="uid://dyxfppw2rop6g"]
 
 [ext_resource type="Texture2D" uid="uid://btvoq4orlliwo" path="res://assets/Celular.png" id="1_e3yxn"]
 [ext_resource type="Script" uid="uid://dj46hgojyi8hl" path="res://scripts/celular.gd" id="1_v5ui1"]
+[ext_resource type="AudioStream" uid="uid://cwtt2bynhqdk2" path="res://sounds/celular dialogo 1.mp3" id="3_dvwmu"]
+[ext_resource type="AudioStream" uid="uid://bo0u1hvrkqau8" path="res://sounds/calular dialogo 2.mp3" id="4_nhy5b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5ui1"]
 bg_color = Color(0.156863, 0.219608, 0.32549, 0.501961)
@@ -42,7 +44,6 @@ autowrap_mode = 2
 
 [node name="CollisionInteracao" type="CollisionShape2D" parent="."]
 position = Vector2(-14.5, 8.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nyj7d")
 
 [node name="label_interacao" type="Label" parent="."]
@@ -51,3 +52,9 @@ offset_top = -76.0
 offset_right = 105.0
 offset_bottom = -53.0
 text = "Pressione 'E' para interagir"
+
+[node name="cecular_fala1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dvwmu")
+
+[node name="cecular_fala2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nhy5b")
