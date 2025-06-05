@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch64st6x6k04n"]
+
+[ext_resource type="Script" uid="uid://bhdbw4ojrahnt" path="res://zMINIGAMES/jogo celular/scripts/ground.gd" id="1_mi8v4"]
+[ext_resource type="Texture2D" uid="uid://clly3i4gqeapd" path="res://zMINIGAMES/jogo celular/assets/Environment/ground_cake.png" id="2_lmksl"]
+
+[node name="plataforma" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_mi8v4")
+metadata/_edit_group_ = true
+
+[node name="GroundCake" type="Sprite2D" parent="."]
+texture = ExtResource("2_lmksl")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-422, -198)
+polygon = PackedVector2Array(231, 183, 264, 245, 577, 237, 614, 180, 606, 154, 241, 151)

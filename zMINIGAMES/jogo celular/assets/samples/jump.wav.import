@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://4arwr4rt0h6x"
+path="res://.godot/imported/jump.wav-b880aa46383cf13477686a24b544bf22.sample"
+
+[deps]
+
+source_file="res://zMINIGAMES/jogo celular/assets/samples/jump.wav"
+dest_files=["res://.godot/imported/jump.wav-b880aa46383cf13477686a24b544bf22.sample"]
+
+[params]
+
+force/8_bit=true
+force/mono=true
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

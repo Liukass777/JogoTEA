@@ -1,0 +1,246 @@
+[gd_scene load_steps=16 format=3 uid="uid://dq7a0va5t78hu"]
+
+[ext_resource type="Script" uid="uid://c43i4snjbe1tq" path="res://scripts/wingman.gd" id="1_hydrs"]
+[ext_resource type="Texture2D" uid="uid://bxch326r828id" path="res://assets/Enemies/wingMan1.png" id="2_lhdtp"]
+[ext_resource type="Texture2D" uid="uid://cn7gv5hbim0k7" path="res://assets/Enemies/wingMan2.png" id="3_q23mn"]
+[ext_resource type="Texture2D" uid="uid://ddwgogqkncfe" path="res://assets/Enemies/wingMan3.png" id="4_0idss"]
+[ext_resource type="Texture2D" uid="uid://2kkyi2xxat4x" path="res://assets/Enemies/wingMan4.png" id="5_p8w8q"]
+[ext_resource type="Texture2D" uid="uid://b22qv46fwrymc" path="res://assets/Enemies/wingMan5.png" id="6_nyfxp"]
+[ext_resource type="Texture2D" uid="uid://dbr3cfdaljshn" path="res://assets/Particles/smoke.png" id="7_51tl5"]
+[ext_resource type="Texture2D" uid="uid://btp2hdvh51wbx" path="res://assets/Particles/portal_orangeParticle.png" id="8_j1e2s"]
+[ext_resource type="AudioStream" uid="uid://bmn3upjxvta23" path="res://assets/samples/enemyhurt.wav" id="9_lhdtp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e0ywy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lhdtp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q23mn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0idss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_p8w8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nyfxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_p8w8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0idss")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcevr"]
+size = Vector2(82, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_085hl"]
+size = Vector2(72, 19)
+
+[sub_resource type="Animation" id="Animation_ap1wp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7du3f"]
+resource_name = "destroy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.038633, -0.0917689), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1333, 0.3333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2667, 0.3667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhqd7"]
+_data = {
+&"RESET": SubResource("Animation_ap1wp"),
+&"destroy": SubResource("Animation_7du3f")
+}
+
+[node name="wingman" type="Node2D"]
+script = ExtResource("1_hydrs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e0ywy")
+autoplay = "default"
+frame = 2
+frame_progress = 0.335568
+
+[node name="body" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_gcevr")
+
+[node name="head" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="head"]
+position = Vector2(0, -34)
+shape = SubResource("RectangleShape2D_085hl")
+
+[node name="enemyhurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_lhdtp")
+bus = &"fx"
+
+[node name="wingtimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+rotation = 3.14159
+
+[node name="Smoke" type="Sprite2D" parent="Node2D"]
+position = Vector2(-4, -177)
+texture = ExtResource("7_51tl5")
+
+[node name="Smoke2" type="Sprite2D" parent="Node2D"]
+position = Vector2(-168, -82)
+texture = ExtResource("7_51tl5")
+
+[node name="Smoke3" type="Sprite2D" parent="Node2D"]
+position = Vector2(-154, 76)
+texture = ExtResource("7_51tl5")
+
+[node name="Smoke4" type="Sprite2D" parent="Node2D"]
+position = Vector2(-1, 141)
+texture = ExtResource("7_51tl5")
+
+[node name="Smoke5" type="Sprite2D" parent="Node2D"]
+position = Vector2(166, 74)
+texture = ExtResource("7_51tl5")
+
+[node name="Smoke6" type="Sprite2D" parent="Node2D"]
+position = Vector2(152, -99)
+texture = ExtResource("7_51tl5")
+
+[node name="PortalOrangeParticle" type="Sprite2D" parent="Node2D"]
+position = Vector2(-168, -1)
+texture = ExtResource("8_j1e2s")
+
+[node name="PortalOrangeParticle2" type="Sprite2D" parent="Node2D"]
+position = Vector2(-91, -138)
+texture = ExtResource("8_j1e2s")
+
+[node name="PortalOrangeParticle3" type="Sprite2D" parent="Node2D"]
+position = Vector2(78, -137)
+texture = ExtResource("8_j1e2s")
+
+[node name="PortalOrangeParticle4" type="Sprite2D" parent="Node2D"]
+position = Vector2(167, -3)
+texture = ExtResource("8_j1e2s")
+
+[node name="PortalOrangeParticle5" type="Sprite2D" parent="Node2D"]
+position = Vector2(94, 113)
+texture = ExtResource("8_j1e2s")
+
+[node name="PortalOrangeParticle6" type="Sprite2D" parent="Node2D"]
+position = Vector2(-81, 120)
+texture = ExtResource("8_j1e2s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_yhqd7")
+}
+
+[connection signal="body_entered" from="body" to="." method="_on_body_body_entered"]
+[connection signal="body_entered" from="head" to="." method="_on_head_body_entered"]
+[connection signal="timeout" from="wingtimer" to="." method="_on_wingtimer_timeout"]

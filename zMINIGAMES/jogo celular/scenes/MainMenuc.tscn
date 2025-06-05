@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://ikrvfwpn207a"]
+
+[ext_resource type="Texture2D" uid="uid://ubvjsqe53i0r" path="res://zMINIGAMES/Jogo das Perguntas/assets/menu.jpg" id="1_nr6l6"]
+[ext_resource type="Texture2D" uid="uid://bymdscldnuhnt" path="res://zMINIGAMES/Jogo das Perguntas/assets/PlayButton.png" id="2_820af"]
+[ext_resource type="Script" uid="uid://bt8gbcbah0wgw" path="res://zMINIGAMES/jogo celular/scripts/button.gd" id="3_nr6l6"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ow34m"]
+b = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0bcu4"]
+font_size = 120
+
+[node name="MainMenu" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_ow34m")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(1.8, 1.0125)
+texture = ExtResource("1_nr6l6")
+
+[node name="buttonSprite" type="Sprite2D" parent="."]
+position = Vector2(567, 340)
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("2_820af")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 474.0
+offset_top = 248.0
+offset_right = 658.0
+offset_bottom = 432.0
+flat = true
+script = ExtResource("3_nr6l6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 99.0
+offset_top = 7.0
+offset_right = 1049.0
+offset_bottom = 196.0
+text = "Jogo do Coelhos "
+label_settings = SubResource("LabelSettings_0bcu4")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

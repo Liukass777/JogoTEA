@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b704qqi0uvp0e"
+path="res://.godot/imported/happy.ogg-8477d9cd83100facef5493dc8d278b3e.oggvorbisstr"
+
+[deps]
+
+source_file="res://zMINIGAMES/jogo celular/assets/music/happy.ogg"
+dest_files=["res://.godot/imported/happy.ogg-8477d9cd83100facef5493dc8d278b3e.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

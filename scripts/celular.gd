@@ -76,4 +76,4 @@ func encerrar_dialogo():
 	texto_dialogo.visible = false
 	cecular_fala_1.stop()
 	cecular_fala_2.stop()
-	get_tree().change_scene_to_file("res://zMINIGAMES/Jogo das Perguntas/scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://zMINIGAMES/jogo celular/scenes/MainMenuc.tscn")

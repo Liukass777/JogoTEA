@@ -1,0 +1,198 @@
+[gd_scene load_steps=24 format=3 uid="uid://dqgy46mkdi68b"]
+
+[ext_resource type="Script" uid="uid://cw7yv4eslmshj" path="res://zMINIGAMES/jogo celular/scripts/parallax_background.gd" id="1_4vaes"]
+[ext_resource type="PackedScene" uid="uid://c2x4cp128f8gn" path="res://zMINIGAMES/jogo celular/scenes/player.tscn" id="1_5gs25"]
+[ext_resource type="Script" uid="uid://bjlq0ufn0vbxs" path="res://zMINIGAMES/jogo celular/scripts/carrot.gd" id="1_6u0xd"]
+[ext_resource type="Texture2D" uid="uid://ddp4cwuhmjppq" path="res://zMINIGAMES/jogo celular/assets/Background/bg_layer1.png" id="2_tbt1b"]
+[ext_resource type="PackedScene" uid="uid://b6786lu8ea7tu" path="res://zMINIGAMES/jogo celular/scenes/coil.tscn" id="2_tgoi4"]
+[ext_resource type="Texture2D" uid="uid://ce6p11l3hhjs2" path="res://zMINIGAMES/jogo celular/assets/Items/carrot.png" id="2_wnfsh"]
+[ext_resource type="Texture2D" uid="uid://dwy01qawget76" path="res://zMINIGAMES/jogo celular/assets/Background/bg_layer2.png" id="3_7du3f"]
+[ext_resource type="PackedScene" uid="uid://ch64st6x6k04n" path="res://zMINIGAMES/jogo celular/scenes/ground.tscn" id="3_imrr5"]
+[ext_resource type="PackedScene" uid="uid://7l1rnydxwv84" path="res://zMINIGAMES/jogo celular/scenes/coin.tscn" id="4_2qbew"]
+[ext_resource type="Texture2D" uid="uid://ne8emg5xiqfb" path="res://zMINIGAMES/jogo celular/assets/Background/bg_layer3.png" id="4_ap1wp"]
+[ext_resource type="PackedScene" uid="uid://dq7a0va5t78hu" path="res://zMINIGAMES/jogo celular/scenes/wingman.tscn" id="5_mxtig"]
+[ext_resource type="Texture2D" uid="uid://idx55ef626dm" path="res://zMINIGAMES/jogo celular/assets/Background/bg_layer4.png" id="5_yhqd7"]
+[ext_resource type="Script" uid="uid://bvlyv1lhdjgp4" path="res://zMINIGAMES/jogo celular/scripts/fly_powerup.gd" id="6_4q13i"]
+[ext_resource type="Texture2D" uid="uid://c18t6qw0odqao" path="res://zMINIGAMES/jogo celular/assets/Items/powerup_wings.png" id="7_gq3hs"]
+[ext_resource type="Texture2D" uid="uid://cqg8xpl54lvqc" path="res://zMINIGAMES/jogo celular/assets/HUD/grey_panel.png" id="13_7du3f"]
+[ext_resource type="Script" uid="uid://drc1ixsxe1le2" path="res://zMINIGAMES/jogo celular/scripts/powerup_bar.gd" id="13_ap1wp"]
+[ext_resource type="Texture2D" uid="uid://cvegjmgpl80sy" path="res://zMINIGAMES/jogo celular/assets/HUD/blue_button00.png" id="14_ap1wp"]
+[ext_resource type="FontFile" uid="uid://c4urnhrrxa6fa" path="res://zMINIGAMES/jogo celular/assets/fonts/Chocolate Bar Demo.otf" id="16_e0ywy"]
+[ext_resource type="Script" uid="uid://cukypekfwjo7p" path="res://zMINIGAMES/jogo celular/scripts/coin_counter.gd" id="16_gcevr"]
+[ext_resource type="Texture2D" uid="uid://dx6adol3s30mu" path="res://zMINIGAMES/jogo celular/assets/HUD/coin_gold.png" id="17_gcevr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fr5wx"]
+size = Vector2(48.5, 1622)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qixj"]
+radius = 31.0644
+
+[sub_resource type="LabelSettings" id="LabelSettings_085hl"]
+font = ExtResource("16_e0ywy")
+font_size = 40
+font_color = Color(0.992157, 0.721569, 0, 1)
+
+[node name="fase" type="Node2D" groups=["player"]]
+
+[node name="carrot" type="Area2D" parent="."]
+position = Vector2(4049, 211)
+script = ExtResource("1_6u0xd")
+metadata/_edit_group_ = true
+
+[node name="Carrot" type="Sprite2D" parent="carrot"]
+texture = ExtResource("2_wnfsh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="carrot"]
+polygon = PackedVector2Array(-34, -20, -32, -13, -23, -6, -16, -1, -7, 4, -7, 5, -5, 11, 23, 33, 37, 31, 30, 8, 12, -9, 2, -11, -1, -22, -3, -27, -8, -34, -27, -33)
+
+[node name="deadzone" type="Area2D" parent="carrot"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="carrot/deadzone"]
+position = Vector2(351, 443)
+shape = SubResource("RectangleShape2D_fr5wx")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_4vaes")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-1, 0)
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="BgLayer1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(986, 282)
+texture = ExtResource("2_tbt1b")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="BgLayer2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(986, 428)
+texture = ExtResource("3_7du3f")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="BgLayer3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(989, 428)
+texture = ExtResource("4_ap1wp")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="BgLayer4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(985, 425)
+texture = ExtResource("5_yhqd7")
+
+[node name="CharacterBody2D" parent="." groups=["player"] instance=ExtResource("1_5gs25")]
+position = Vector2(103, 264)
+
+[node name="coil" parent="." instance=ExtResource("2_tgoi4")]
+position = Vector2(1540, 476)
+
+[node name="coil3" parent="." instance=ExtResource("2_tgoi4")]
+position = Vector2(2722, 398)
+
+[node name="coin" parent="." instance=ExtResource("4_2qbew")]
+position = Vector2(2042, 171)
+
+[node name="wingman" parent="." instance=ExtResource("5_mxtig")]
+position = Vector2(1161, 471)
+
+[node name="fly_powerup" type="Area2D" parent="." groups=["powerupBAR"]]
+position = Vector2(1794, 392)
+script = ExtResource("6_4q13i")
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="fly_powerup"]
+texture = ExtResource("7_gq3hs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fly_powerup"]
+shape = SubResource("CircleShape2D_7qixj")
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[node name="powerup_bar" type="Node2D" parent="hud" groups=["powerupBAR"]]
+position = Vector2(217, 24)
+script = ExtResource("13_ap1wp")
+metadata/_edit_group_ = true
+
+[node name="base" type="NinePatchRect" parent="hud/powerup_bar"]
+offset_right = 441.0
+offset_bottom = 40.0
+texture = ExtResource("13_7du3f")
+patch_margin_left = 8
+patch_margin_top = 11
+patch_margin_right = 8
+patch_margin_bottom = 9
+
+[node name="bar" type="NinePatchRect" parent="hud/powerup_bar"]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 440.0
+offset_bottom = 38.0
+texture = ExtResource("14_ap1wp")
+patch_margin_left = 2
+patch_margin_top = 3
+patch_margin_right = 4
+patch_margin_bottom = 3
+
+[node name="coin_counter" type="Node2D" parent="hud"]
+position = Vector2(16, 13)
+script = ExtResource("16_gcevr")
+metadata/_edit_group_ = true
+
+[node name="coins" type="Label" parent="hud/coin_counter"]
+offset_left = 73.0
+offset_top = 11.0
+offset_right = 179.0
+offset_bottom = 66.0
+text = "9999"
+label_settings = SubResource("LabelSettings_085hl")
+
+[node name="CoinGold" type="Sprite2D" parent="hud/coin_counter"]
+position = Vector2(33, 32)
+texture = ExtResource("17_gcevr")
+
+[node name="coin2" parent="." instance=ExtResource("4_2qbew")]
+position = Vector2(2688, 326)
+
+[node name="coin3" parent="." instance=ExtResource("4_2qbew")]
+position = Vector2(359, 283)
+
+[node name="coin4" parent="." instance=ExtResource("4_2qbew")]
+position = Vector2(3404, 465)
+
+[node name="coil4" parent="." instance=ExtResource("2_tgoi4")]
+position = Vector2(3637, 507)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_imrr5")]
+position = Vector2(171, 419)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("3_imrr5")]
+position = Vector2(553, 411)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("3_imrr5")]
+position = Vector2(1012, 572)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("3_imrr5")]
+position = Vector2(1433, 575)
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("3_imrr5")]
+position = Vector2(2739, 515)
+
+[node name="StaticBody2D6" parent="." instance=ExtResource("3_imrr5")]
+position = Vector2(3266, 606)
+
+[node name="StaticBody2D7" parent="." instance=ExtResource("3_imrr5")]
+position = Vector2(3644, 619)
+
+[node name="StaticBody2D8" parent="." instance=ExtResource("3_imrr5")]
+position = Vector2(4093, 315)
+
+[connection signal="body_entered" from="carrot" to="carrot" method="_on_body_entered"]
+[connection signal="body_entered" from="carrot/deadzone" to="carrot" method="_on_deadzone_body_entered"]
+[connection signal="body_entered" from="fly_powerup" to="fly_powerup" method="_on_body_entered"]

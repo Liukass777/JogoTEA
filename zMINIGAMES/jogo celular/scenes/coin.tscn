@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://7l1rnydxwv84"]
+
+[ext_resource type="Texture2D" uid="uid://b1r4jlraxpb82" path="res://assets/Items/gold_1.png" id="1_d14el"]
+[ext_resource type="Script" uid="uid://64v6kwlp073q" path="res://scripts/coin.gd" id="1_wnlwo"]
+[ext_resource type="Texture2D" uid="uid://n7m8mxycs8wt" path="res://assets/Items/gold_2.png" id="2_1ikuy"]
+[ext_resource type="Texture2D" uid="uid://dcgjihg16lq4v" path="res://assets/Items/gold_3.png" id="3_wnlwo"]
+[ext_resource type="Texture2D" uid="uid://chla3e6i05lwm" path="res://assets/Items/gold_4.png" id="4_jig8b"]
+[ext_resource type="Texture2D" uid="uid://cdg55b20muij5" path="res://assets/Particles/portal_yellowParticle.png" id="6_jig8b"]
+[ext_resource type="AudioStream" uid="uid://c5actjphbhk41" path="res://assets/samples/coin.wav" id="6_xmuha"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmuha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d14el")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1ikuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wnlwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jig8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1ikuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_d14el")
+}],
+"loop": true,
+"name": &"coin",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfxoj"]
+radius = 43.0116
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2qbew"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 60.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 44.08
+
+[node name="coin" type="Area2D"]
+script = ExtResource("1_wnlwo")
+metadata/_edit_group_ = true
+
+[node name="coinsprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_xmuha")
+animation = &"coin"
+autoplay = "coin"
+frame_progress = 0.116151
+
+[node name="coinshape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kfxoj")
+
+[node name="coin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xmuha")
+bus = &"fx"
+
+[node name="queue_timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.0
+one_shot = true
+
+[node name="coinparticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+texture = ExtResource("6_jig8b")
+one_shot = true
+explosiveness = 0.85
+process_material = SubResource("ParticleProcessMaterial_2qbew")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="queue_timer" to="." method="_on_queue_timer_timeout"]

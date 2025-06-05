@@ -1,0 +1,56 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://4denhnl2dfm2"]
+
+[ext_resource type="Texture2D" uid="uid://ch0csclsvmoxu" path="res://assets/Players/bunny1_hurt.png" id="1_6qs2m"]
+[ext_resource type="Texture2D" uid="uid://cj6c6iea011e6" path="res://assets/Players/bunny1_stand.png" id="2_m4gyw"]
+[ext_resource type="Texture2D" uid="uid://b6ve0v6ayv75o" path="res://assets/Players/bunny1_jump.png" id="3_r5782"]
+[ext_resource type="Texture2D" uid="uid://gd4b7sq5o56o" path="res://assets/Players/bunny1_walk1.png" id="4_nsxgf"]
+[ext_resource type="Texture2D" uid="uid://dg0oafkfslnmb" path="res://assets/Players/bunny1_walk2.png" id="5_7khto"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6qs2m")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m4gyw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_r5782")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m4gyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r5782")
+}],
+"loop": true,
+"name": &"victory",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nsxgf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7khto")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
+}]

@@ -1,0 +1,292 @@
+[gd_scene load_steps=20 format=3 uid="uid://c2x4cp128f8gn"]
+
+[ext_resource type="Script" uid="uid://cvelq50cunywy" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://dr8ynwf0jhq74" path="res://assets/Items/wing_left.png" id="2_fjrip"]
+[ext_resource type="SpriteFrames" uid="uid://4denhnl2dfm2" path="res://resources/coelhomarrom.tres" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://dbr3cfdaljshn" path="res://assets/Particles/smoke.png" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://bkyh3b4l1lkb0" path="res://assets/Items/wing_right.png" id="3_smehm"]
+[ext_resource type="AudioStream" uid="uid://4arwr4rt0h6x" path="res://assets/samples/jump.wav" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://ccjnmjbv5ofgr" path="res://assets/samples/death.wav" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://dkrtco03sq6hi" path="res://assets/samples/flap.wav" id="8_smehm"]
+[ext_resource type="AudioStream" uid="uid://corm1jkb7kce5" path="res://assets/samples/Victory.ogg" id="9_ur7pv"]
+
+[sub_resource type="Animation" id="Animation_y4r1p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WingLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WingRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ur7pv"]
+resource_name = "fly"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WingLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.785397, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WingRight:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.785397, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d2wvv"]
+_data = {
+&"RESET": SubResource("Animation_y4r1p"),
+&"fly": SubResource("Animation_ur7pv")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
+radius = 62.0
+height = 138.0
+
+[sub_resource type="Animation" id="Animation_qhqgy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g2els"]
+resource_name = "boing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, 56), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.16667, 0.748756), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqkch"]
+_data = {
+&"RESET": SubResource("Animation_qhqgy"),
+&"boing": SubResource("Animation_g2els")
+}
+
+[sub_resource type="Animation" id="Animation_qlg0r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 124)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+resource_name = "dust"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.13),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, 124), Vector2(-1, 124), Vector2(-1, 124)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.13),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.06, 0.13),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
+_data = {
+&"RESET": SubResource("Animation_qlg0r"),
+&"dust": SubResource("Animation_dqkch")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_g2els")
+
+[node name="wings" type="Node2D" parent="." groups=["powerupBAR"]]
+visible = false
+
+[node name="WingLeft" type="Sprite2D" parent="wings"]
+position = Vector2(-52, 12)
+texture = ExtResource("2_fjrip")
+offset = Vector2(-35, -26)
+
+[node name="WingRight" type="Sprite2D" parent="wings"]
+position = Vector2(54, 10)
+texture = ExtResource("3_smehm")
+offset = Vector2(32, -23)
+
+[node name="animwings" type="AnimationPlayer" parent="wings"]
+libraries = {
+&"": SubResource("AnimationLibrary_d2wvv")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_qhqgy")
+animation = &"victory"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 18)
+shape = SubResource("CapsuleShape2D_g2els")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(357, 0)
+limit_left = 0
+limit_top = 0
+limit_bottom = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dqkch")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-1, 124)
+
+[node name="Smoke" type="Sprite2D" parent="Node2D"]
+position = Vector2(-68, -7)
+texture = ExtResource("3_qhqgy")
+
+[node name="Smoke2" type="Sprite2D" parent="Node2D"]
+position = Vector2(64, -4)
+texture = ExtResource("3_qhqgy")
+
+[node name="anim_dust" type="AnimationPlayer" parent="Node2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_tuyoq")
+}
+
+[node name="jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dqkch")
+bus = &"fx"
+
+[node name="dead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qlg0r")
+bus = &"fx"
+
+[node name="flap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_smehm")
+bus = &"fx"
+
+[node name="victory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ur7pv")
+bus = &"fx"
